@@ -19,6 +19,7 @@ import java.io.IOException;
 public class ClickDate extends AppCompatActivity {
     EditText bookName, point, addMemo;
     Button my, save;
+    EditText edtname, edtpoint, edtmemo;
     TextView back;
     String fileName;
 
@@ -39,6 +40,24 @@ public class ClickDate extends AppCompatActivity {
         save = (Button) findViewById(R.id.save);
 
         String str = readMemo(fileName);
+
+        save.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v){
+                try {
+                    FileOutputStream outFs = openFileOutput(fileName, Context.MODE_PRIVATE);
+                    String str1 = edtname.getText().toString();
+                    String str2 = edtpoint.getText().toString();
+                    String str3 = edtmemo.getText().toString();
+                    outFs.write(str1.getBytes());
+                    outFs.write(str2.getBytes());
+                    outFs.write(str3.getBytes());
+                    outFs.close();
+                    Toast.makeText(getApplicationContext(), fileName +
+                            " 이 저장됨", Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                }
+            }
+        });
 
     }
 

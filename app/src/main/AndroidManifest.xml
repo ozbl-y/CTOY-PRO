@@ -18,6 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name = ".SignUp" android:label ="SignUp 액티비티"/>
+        <activity android:name = ".Login" android:label ="Login 액티비티"/>
+        <activity android:name = ".ClickDate" android:label ="ClickDate 액티비티"/>
+        <activity android:name = ".ListType" android:label ="ListType 액티비티"/>
     </application>
 
 </manifest>
