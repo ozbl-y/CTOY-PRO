@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ListType" >
 
-    <androidx.appcompat.widget.AppCompatButton
+<!--    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         android:background="@color/white"
         android:text="←"
         android:textColor="#0724fa"
-        android:textStyle="bold" />
+        android:textStyle="bold" />-->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/my"
@@ -38,10 +38,10 @@
         android:layout_marginLeft="70dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:enabled="false"
         android:text="달력형"
         android:textColor="#0724fa"
         android:textStyle="bold" />
+<!--android:enabled="false"-->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/case2"
@@ -59,14 +59,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="170dp"
             android:gravity="center"
-            android:orientation="vertical">-->
+            android:orientation="vertical">
 
             <ListView
                 android:id="@+id/listView1"

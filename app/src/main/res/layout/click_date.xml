@@ -5,7 +5,7 @@
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#ffffff"
-    tools:context=".ClickDate" >
+    tools:context=".AddPoint" >
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/back"
@@ -45,34 +45,36 @@
             android:layout_above="@id/point"
             android:layout_marginTop="150dp"
             android:layout_marginBottom="30dp"
-            android:ems="10"
-            android:hint="  BOOK NAME"
-            android:inputType="textShortMessage" />
+            android:ems="11"
+            android:gravity="center"
+            android:hint="BOOK NAME"
+            android:inputType="textShortMessage"
+            android:textStyle="bold" />
 
-        <EditText
+        <RatingBar
             android:id="@+id/point"
+            style="@style/Widget.AppCompat.RatingBar"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_above="@id/addmemo"
             android:layout_marginBottom="30dp"
-            android:ems="10"
-            android:hint="  POINT"
-            android:inputType="text"
-            android:text="" />
+            android:numStars="5" />
 
         <EditText
             android:id="@+id/addmemo"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginBottom="200dp"
-            android:ems="10"
-            android:hint="  ADD MEMO"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="ADD MEMO"
+            android:inputType="textLongMessage"
             android:text=""
-            android:inputType="textLongMessage" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,13 +82,12 @@
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="50dp"
         android:background="@color/white"
-        android:enabled="false"
         android:text="CHANGE"
         android:textColor="#0724fa"
         android:textSize="17sp"
         android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,11 +96,39 @@
         android:layout_marginRight="50dp"
         android:layout_marginBottom="50dp"
         android:background="@color/white"
-        android:enabled="false"
         android:text="SAVE"
         android:textColor="#0724fa"
         android:textSize="17sp"
         android:textStyle="bold" />
+
+
+<!--    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/case1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:text="달력형"
+        android:textColor="#0724fa"
+        android:textStyle="bold" />
+    &lt;!&ndash;android:enabled="false"&ndash;&gt;
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/case2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginBottom="10dp"
+        android:background="#0724fa"
+        android:enabled="false"
+        android:text="리스트형"
+        android:textColor="@color/white"
+        android:textStyle="bold" />-->
 
 
 </RelativeLayout>

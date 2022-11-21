@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:showWeekNumber="false" />
+        />
 <!--    <DatePicker
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
@@ -55,34 +55,9 @@
         android:layout_marginRight="70dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:enabled="false"
         android:text="리스트형"
         android:textColor="#0724fa"
         android:textStyle="bold" />
 
 
 </RelativeLayout>
-
-
-    <!--    <Button
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:text="←"
-            android:textColor="#0724fa"
-            android:enabled="false"
-            android:textStyle="bold" />-->
-    <!--
-        <Button
-            android:id="@+id/my"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:enabled="false"
-            android:text="MY"
-            android:textColor="#0724fa"
-            android:textStyle="bold" />-->

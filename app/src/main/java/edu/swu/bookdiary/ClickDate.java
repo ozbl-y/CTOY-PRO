@@ -1,64 +1,118 @@
 package edu.swu.bookdiary;
 
 import android.content.Context;
+import android.content.Intent;
+import android.location.GnssAntennaInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class ClickDate extends AppCompatActivity {
-    EditText bookName, point, addMemo;
-    Button my, save;
-    EditText edtname, edtpoint, edtmemo;
-    TextView back;
-    String fileName;
+    //date누르면 화면하단에 책제목, 평점
+    private RatingBar ratingbar;
+
+    TextView back, my;
+    EditText bookname, addmemo;
+    Button save, change;
+    String bk, mm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.click_date);
 
-        //뒤로가기 버튼
+        my = findViewById(R.id.my);
         back = findViewById(R.id.back);
-        back.setOnClickListener(v -> onBackPressed() );
-
-        bookName = (EditText) findViewById(R.id.bookname);
-        point = (EditText) findViewById(R.id.point);
-        addMemo = (EditText) findViewById(R.id.addmemo);
-        my = (Button) findViewById(R.id.my);
-        back = (Button) findViewById(R.id.back);
+        bookname = (EditText) findViewById(R.id.bookname);
+        ratingbar = findViewById(R.id.point);
+        addmemo = (EditText) findViewById(R.id.addmemo);
         save = (Button) findViewById(R.id.save);
+        change = (Button) findViewById(R.id.change);
 
-        String str = readMemo(fileName);
+        back.setOnClickListener(v -> onBackPressed() );
+        my.setOnClickListener(v -> {
+            Intent intent = new Intent(this, My.class);
+            startActivity(intent);
+        });
 
-        save.setOnClickListener(new View.OnClickListener(){
+/*        ratingbar.setOnRatingBarChangeListener(new Listener());*/
+
+
+        String book = readBookName(bk);
+        String memo = readMemo(mm);
+        bookname.setText(book);
+        addmemo.setText(memo);
+
+        save.setEnabled(true);
+        change.setEnabled(true);
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    FileOutputStream outFs = openFileOutput(bk, Context.MODE_PRIVATE);
+                    FileOutputStream outFs2 = openFileOutput(mm, Context.MODE_PRIVATE);
+                    String book = bookname.getText().toString();
+                    String memo = addmemo.getText().toString();
+                    outFs.write(book.getBytes());
+                    outFs2.write(memo.getBytes());
+                    outFs.close();
+                    outFs2.close();
+                    Toast.makeText(getApplicationContext(), bk + mm +
+                            " 이 저장됨", Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                }
+            }
+        });
+    }
+     /*   btnWrite.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
                 try {
                     FileOutputStream outFs = openFileOutput(fileName, Context.MODE_PRIVATE);
-                    String str1 = edtname.getText().toString();
-                    String str2 = edtpoint.getText().toString();
-                    String str3 = edtmemo.getText().toString();
-                    outFs.write(str1.getBytes());
-                    outFs.write(str2.getBytes());
-                    outFs.write(str3.getBytes());
+                    String str = edtDiary.getText().toString();
+                    outFs.write(str.getBytes());
                     outFs.close();
                     Toast.makeText(getApplicationContext(), fileName +
                             " 이 저장됨", Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                 }
             }
-        });
+        });*/
 
+/*    class Listener implements RatingBar.OnRatingBarChangeListener {
+        @Override
+        public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+            ratingbar.setRating(rating);
+        }
+    }*/
+
+    String readBookName(String fName) {
+        String bookStr = null;
+        FileInputStream inFs;
+        try {
+            inFs = openFileInput(fName);
+            byte[] txt = new byte[500];
+            inFs.read(txt);
+            inFs.close();
+            bookStr = (new String(txt)).trim();
+            //change.setText("수정하기");
+        } catch (IOException e) { // 이걸 쓰지 않으면 앱이 그냥 죽어버림
+            bookname.setHint(" NONE ");
+            //addmemo.setHint(" ");
+            //save.setText("새로 저장");
+        }
+        return bookStr;
     }
 
     String readMemo(String fName) {
@@ -70,13 +124,15 @@ public class ClickDate extends AppCompatActivity {
             inFs.read(txt);
             inFs.close();
             memoStr = (new String(txt)).trim();
-            save.setText("CHANGE");
-        } catch (IOException e) { // 이걸 쓰지 않으면 앱이 그냥 죽어버림
-            addMemo.setHint("ADD MEMO");
-            save.setText("SAVE");
+           // change.setText("수정하기");
+        } catch (IOException e) {
+            addmemo.setHint(" NONE ");
+            //addmemo.setHint(" ");
+            //save.setText("새로 저장");
         }
         return memoStr;
     }
 
 }
+
 
