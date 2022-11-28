@@ -2,15 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.swu.bookdiary">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Calendar형"
+        android:label="Calender형"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookDiary">
         <activity
-            android:name=".ClickDate"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,12 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:label="Calendar형"/>
-        <activity android:name = ".SignUp" android:label ="SignUp"/>
-        <activity android:name = ".Login" android:label ="Login"/>
-       <!-- <activity android:name = ".ClickDate" android:label ="BOOK LIST"/>-->
-        <activity android:name = ".ListType" android:label ="List형"/>
-        <activity android:name = ".My" android:label ="My"/>
+        <activity android:name=".Login" android:label="Login"/>
+        <activity android:name=".ListType" android:label="List형"/>
+        <activity android:name=".ClickDate" android:label="BOOK LIST"/>
+        <activity android:name=".SignUp" android:label="SignUp"/>
+       <!-- <activity android:name=".SignUp" android:label="SignUp"/>-->
+        <activity android:name=".My" android:label="MY"/>
+
+       <!-- <activity android:name=".MainActivity" android:label="Calender형"/>-->
+        <!--<activity android:name = ".SignUp" android:label ="SignUp"/> -->
     </application>
 
 </manifest>

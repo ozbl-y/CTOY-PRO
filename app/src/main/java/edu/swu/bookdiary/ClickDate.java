@@ -25,7 +25,7 @@ public class ClickDate extends AppCompatActivity {
     TextView back, my;
     EditText bookname, addmemo;
     Button save, change;
-    String bk, mm;
+    String name, memo; // filename
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +46,54 @@ public class ClickDate extends AppCompatActivity {
             startActivity(intent);
         });
 
+        //save 클릭하면 메모 저장됨 - 수정해야됨
+        /*save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FileOutputStream outFs = openFileOutput(memo, Context.MODE_PRIVATE);
+                String mm = 
+            }
+        });*/
+        /*        btnWrite.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v){
+                try {
+                    FileOutputStream outFs = openFileOutput(fileName, Context.MODE_PRIVATE);
+                    String str = edtDiary.getText().toString();
+                    outFs.write(str.getBytes());
+                    outFs.close();
+                    Toast.makeText(getApplicationContext(), fileName +
+                            " 이 저장됨", Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                }
+            }
+        });*/
+
+/*        save.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v){
+                try {
+                    FileOutputStream outFs = openFileOutput(name, Context.MODE_PRIVATE);
+                    String str = edtDiary.getText().toString();
+                    outFs.write(str.getBytes());
+                    outFs.close();
+                    Toast.makeText(getApplicationContext(), name +
+                            " 이 저장됨", Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                }
+            }
+        });*/
+
 /*        ratingbar.setOnRatingBarChangeListener(new Listener());*/
 
 
-        String book = readBookName(bk);
+/*        String book = readBookName(bk);
         String memo = readMemo(mm);
         bookname.setText(book);
         addmemo.setText(memo);
 
         save.setEnabled(true);
-        change.setEnabled(true);
+        change.setEnabled(true);*/
 
-        save.setOnClickListener(new View.OnClickListener() {
+        /*save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try{
@@ -74,21 +110,8 @@ public class ClickDate extends AppCompatActivity {
                 } catch (IOException e) {
                 }
             }
-        });
-    }
-     /*   btnWrite.setOnClickListener(new View.OnClickListener(){
-            public void onClick (View v){
-                try {
-                    FileOutputStream outFs = openFileOutput(fileName, Context.MODE_PRIVATE);
-                    String str = edtDiary.getText().toString();
-                    outFs.write(str.getBytes());
-                    outFs.close();
-                    Toast.makeText(getApplicationContext(), fileName +
-                            " 이 저장됨", Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                }
-            }
         });*/
+    }
 
 /*    class Listener implements RatingBar.OnRatingBarChangeListener {
         @Override
@@ -97,7 +120,7 @@ public class ClickDate extends AppCompatActivity {
         }
     }*/
 
-    String readBookName(String fName) {
+/*    String readBookName(String fName) {
         String bookStr = null;
         FileInputStream inFs;
         try {
@@ -131,7 +154,18 @@ public class ClickDate extends AppCompatActivity {
             //save.setText("새로 저장");
         }
         return memoStr;
-    }
+    }*/
+
+    /*        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                date[0] = year + "/" + (month +1) + "/" + dayOfMonth;
+               // dateRecord.setText(date[0]);
+            }
+        });*/
+      /*  Intent intent = getIntent();
+        final String date = intent.getExtras().getString("ClickDate");
+        day.setText(date);*/
 
 }
 

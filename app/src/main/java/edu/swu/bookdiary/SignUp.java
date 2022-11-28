@@ -2,6 +2,7 @@ package edu.swu.bookdiary;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUp extends AppCompatActivity {
     TextView back;
-    EditText name,id,pw;
-    Button submit;
+    private EditText name,id,pw;
+    private Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,18 @@ public class SignUp extends AppCompatActivity {
             Intent intent = new Intent(this, Login.class);
             startActivity(intent);
         });
+/*        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userID = id.getText().toString();
+                String userPW = pw.getText().toString();
+                String userNickName = name.getText().toString();
+
+                // 회원가입 요청에 대한 응답
+
+                Response.Listener<String> reponseListener =
+            }
+        });*/
 
     }
 }
