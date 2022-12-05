@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         //리스트형 버튼 클릭시, ListType 페이지로 이동
         case2.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ListType.class);
+            Intent intent = new Intent(this, MemoAdapter.class);
+                                          // MemoAdapter -> ListType으로 바꾸기
             startActivity(intent);
         });
 
@@ -58,9 +59,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ClickDate.class);
             startActivity(intent);
         });
-
-
-
 /*        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,14 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });*/
-
-
-
-
-
-
-
-
     }
 
 }
