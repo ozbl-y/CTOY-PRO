@@ -3,6 +3,7 @@ package edu.swu.bookdiary;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,13 +17,17 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 public class MainActivity extends AppCompatActivity {
     CalendarView calendarView;
-
     EditText edtDiary;
     TextView case2, my, button;
     String date, fileName;
 
+
+    //final BookDiary application = (BookDiary) getApplication();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         my = findViewById(R.id.my);
         case2 = findViewById(R.id.case2);
         button = findViewById(R.id.button);
+
+
 
         final CharSequence[] date = {null};
 
