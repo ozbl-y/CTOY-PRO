@@ -45,8 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         //리스트형 버튼 클릭시, ListType 페이지로 이동
         case2.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MemoAdapter.class);
-                                          // MemoAdapter -> ListType으로 바꾸기
+            Intent intent = new Intent(this, ListType.class);
             startActivity(intent);
         });
 

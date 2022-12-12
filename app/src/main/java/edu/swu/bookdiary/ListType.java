@@ -31,8 +31,8 @@ public class ListType extends AppCompatActivity{
         case1 = findViewById(R.id.case1);
 
         //결과 찍기 위한 textview
-        TextView bookname = findViewById(R.id.bookname);
-        TextView addmemo = findViewById(R.id.addmemo);
+        TextView bookname = findViewById(R.id.bookname); //add
+        TextView addmemo = findViewById(R.id.addmemo); //add
 
         // intent로부터 넘긴 데이터 뽑아냄
         Intent intent= getIntent();

@@ -56,23 +56,6 @@ public class ClickDate extends AppCompatActivity implements View.OnClickListener
 
         save.setOnClickListener(this);
 
-/*        //save 클릭하면 메모 저장됨 - 수정해야됨 -> 일단 ok
-        save.setOnClickListener(v -> {
-
-            Toast.makeText(getApplicationContext(), "SUCCESS SAVE", Toast.LENGTH_SHORT).show();
-            titles = bookname.getText().toString();
-            contents = addmemo.getText().toString();
-            Intent add = new Intent(ClickDate.this, MemoAdapter.class);
-                                              // 나중에 MemoAdapter -> ListType으로 바꾸기
-            add.putExtra("NAME", titles);
-            // ratingbar는??????????
-            add.putExtra("MEMO", contents);
-            setResult(RESULT_OK, add);
-            finish();
-*//*                Intent intent = new Intent(this, MainActivity.class);
-                intent.putExtra("user", mylist.get(position));
-                startActivity(intent);*//*
-        });*/
     }
     //얻어내야됨
     public void onClick(View v){
