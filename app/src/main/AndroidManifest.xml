@@ -10,8 +10,7 @@
         android:label="Calender형"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BookDiary"
-        android:name=".BookDiary">
+        android:theme="@style/Theme.BookDiary">
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -22,10 +21,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login" android:label="Login"/>
-        <activity android:name=".MemoActivity" android:label="List형"/>
+        <activity android:name=".ListType" android:label="List형"/>
+        <!--<activity android:name=".MainActivity" android:label="Main"/>-->
         <activity android:name=".ClickDate" android:label="BOOK LIST"/>
         <activity android:name=".SignUp" android:label="SignUp"/>
-       <!-- <activity android:name=".SignUp" android:label="SignUp"/>-->
         <activity android:name=".My" android:label="MY"/>
 
     </application>

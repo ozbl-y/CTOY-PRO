@@ -4,19 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MemoAdapter" >
-
-<!--    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
-        android:background="@color/white"
-        android:text="←"
-        android:textColor="#0724fa"
-        android:textStyle="bold" />-->
+    tools:context=".ListType" >
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/my"
@@ -41,7 +29,6 @@
         android:text="달력형"
         android:textColor="#0724fa"
         android:textStyle="bold" />
-<!--android:enabled="false"-->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/case2"
@@ -52,25 +39,37 @@
         android:layout_marginRight="70dp"
         android:layout_marginBottom="10dp"
         android:background="#0724fa"
-        android:enabled="false"
         android:text="리스트형"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="170dp"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <ListView
-            android:id="@+id/listView1"
+        <TextView
+            android:id="@+id/titleResult"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:text="title" />
+
+        <TextView
+            android:id="@+id/memoResult"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="memo" />
+
+        <!--<ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </ListView>
+            android:layout_height="wrap_content"
+            android:id="@+id/listview" />-->
 
     </LinearLayout>
 

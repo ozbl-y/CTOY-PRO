@@ -4,7 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,36 +16,38 @@ import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Calendar;
-
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    ClickDate.myDBHelper myHelper;
     CalendarView calendarView;
-    EditText edtDiary;
-    TextView case2, my, button;
-    String date, fileName;
+    EditText titleResult, memoResult;
+    Button btnInsert;
+    TextView case1, case2, my;
+    SQLiteDatabase sqlDB;
 
-
-    //final BookDiary application = (BookDiary) getApplication();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         calendarView = findViewById(R.id.calendarView);
-      //  edtDiary = (EditText) findViewById(R.id.edtDiary);
+        btnInsert = (Button) findViewById(R.id.btnInsert);
+        titleResult = (EditText) findViewById(R.id.titleResult); // 결과출력
+        memoResult = (EditText) findViewById(R.id.memoResult); // 결과출력
+
         my = findViewById(R.id.my);
+        case1 = findViewById(R.id.case1);
         case2 = findViewById(R.id.case2);
-        button = findViewById(R.id.button);
-
-
+        myHelper = new ClickDate.myDBHelper(this);
 
         final CharSequence[] date = {null};
+
+        btnInsert.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ClickDate.class);
+            startActivity(intent);
+        });
 
         //리스트형 버튼 클릭시, ListType 페이지로 이동
         case2.setOnClickListener(v -> {
@@ -60,19 +66,17 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ClickDate.class);
             startActivity(intent);
         });
-        //date클릭시 ClickDate 페이지로 이동
-        button.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ClickDate.class);
-            startActivity(intent);
-        });
-/*        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ClickDate.class);
-                intent.putExtra("ClickDate", date[0]);
-                startActivity(intent);
-            }
-        });*/
-    }
 
+        case1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                sqlDB = myHelper.getWritableDatabase();
+                sqlDB.execSQL("INSERT INTO groupTBL VALUES ( '" + titleResult.getText().toString() + "' , "
+                        + memoResult.getText().toString() + ");");
+                sqlDB.close();
+                Toast.makeText(getApplicationContext(), "저장됨",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 }
