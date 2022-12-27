@@ -77,9 +77,10 @@ public class Login extends AppCompatActivity {
                     toast.show();
                     //인텐트 생성 및 호출
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class); //메인화면으로
+                    intent.putExtra("id", id); //id값 보내줌
                     startActivity(intent);
                     finish();
-                    //intent.putExtra("id", id); //id값 보내줌
+
                 }
                 cursor.close();
             }

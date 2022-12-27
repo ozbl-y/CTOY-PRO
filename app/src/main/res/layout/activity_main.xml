@@ -15,7 +15,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:background="@color/white"
-        android:text="MY"
+        android:text = "MY"
         android:textColor="#0724fa"
         android:textStyle="bold" />
 
@@ -155,7 +155,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linear3"
+        android:layout_below="@+id/linear4"
         android:layout_marginTop="10dp">
 
         <TextView

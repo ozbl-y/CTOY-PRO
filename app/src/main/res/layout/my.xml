@@ -33,7 +33,7 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/nickname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,14 +43,14 @@
         android:gravity="center"
         android:textColor="#0724fa"
         android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textStyle="bold" />-->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nickname"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/my"
         android:layout_marginTop="10dp"
         android:background="@color/white"
         android:text="LOGOUT"

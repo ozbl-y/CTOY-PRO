@@ -15,15 +15,15 @@ public class DBHelper extends SQLiteOpenHelper {
     // Person Table 생성
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE DEMO_SQLITE(bookname TEXT, point TEXT, memo TEXT)");
+        db.execSQL("CREATE TABLE DEMO_SQLITE(bookname TEXT, point TEXT, memo TEXT);");
     }
 
 
     // Person Table Upgrade
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //db.execSQL("DROP TABLE IF EXISTS Person");
-        //onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS DEMO_SQLITE");
+        onCreate(db);
     }
 
     // Person Table 데이터 입력
@@ -37,9 +37,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void update(String bookname, String point, String memo) {
         SQLiteDatabase db = getWritableDatabase();
         // 입력한 항목과 일치하는 행의 memo 수정
-        if (bookname != "") {
-            db.execSQL("UPDATE DEMO_SQLITE SET point = " + point + ", memo = '" + memo + "'" + " WHERE bookname = '" + bookname + "';");
-        }
+        db.execSQL("UPDATE DEMO_SQLITE SET point = " + point + ", memo = '" + memo + "'" + " WHERE bookname = '" + bookname + "';");
         db.close();
     }
 
@@ -47,9 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void delete(String bookname) {
         SQLiteDatabase db = getWritableDatabase();
         // 입력한 항목과 일치하는 행 삭제
-        if (bookname != "") {
-            db.execSQL("DELETE FROM DEMO_SQLITE WHERE bookname='" + bookname + "';");
-        }
+        db.execSQL("DELETE FROM DEMO_SQLITE WHERE bookname='" + bookname + "';");
         db.close();
     }
 
