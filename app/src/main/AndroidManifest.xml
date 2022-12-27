@@ -7,12 +7,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Calender형"
+        android:label="BOOKMEMO"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookDiary">
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,10 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" android:label="Login"/>
-        <activity android:name=".ListType" android:label="List형"/>
-        <!--<activity android:name=".MainActivity" android:label="Main"/>-->
-        <activity android:name=".ClickDate" android:label="BOOK LIST"/>
+       <!-- <activity android:name=".Login" android:label="Login"/>-->
+        <activity android:name=".MainActivity" android:label="Main"/>
         <activity android:name=".SignUp" android:label="SignUp"/>
         <activity android:name=".My" android:label="MY"/>
 

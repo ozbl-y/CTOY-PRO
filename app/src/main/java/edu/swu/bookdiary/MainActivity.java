@@ -18,65 +18,119 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
-    ClickDate.myDBHelper myHelper;
-    CalendarView calendarView;
-    EditText titleResult, memoResult;
-    Button btnInsert;
-    TextView case1, case2, my;
-    SQLiteDatabase sqlDB;
+    TextView my, nickname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        calendarView = findViewById(R.id.calendarView);
-        btnInsert = (Button) findViewById(R.id.btnInsert);
-        titleResult = (EditText) findViewById(R.id.titleResult); // 결과출력
-        memoResult = (EditText) findViewById(R.id.memoResult); // 결과출력
+        final DBHelper dbHelper = new DBHelper(getApplicationContext(),
+                "DEMO_SQLITE.db", null, 1);
+
+        // 테이블에 있는 모든 데이터 출력
+        final TextView result = (TextView) findViewById(R.id.result); // 결과
+        final EditText etDate = (EditText) findViewById(R.id.date); // 입력
+        final EditText etTitle = (EditText) findViewById(R.id.bookname); // 입력
+        final EditText etPoint = (EditText) findViewById(R.id.point); // 입력
+        final EditText etMemo = (EditText) findViewById(R.id.memo); // 입력
+
+        Button select = (Button) findViewById(R.id.select);
 
         my = findViewById(R.id.my);
-        case1 = findViewById(R.id.case1);
-        case2 = findViewById(R.id.case2);
-        myHelper = new ClickDate.myDBHelper(this);
+        nickname = findViewById(R.id.my2);
 
-        final CharSequence[] date = {null};
-
-        btnInsert.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ClickDate.class);
-            startActivity(intent);
-        });
-
-        //리스트형 버튼 클릭시, ListType 페이지로 이동
-        case2.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ListType.class);
-            startActivity(intent);
-        });
-
-        // my 버튼 클릭 시 my화면으로 이동
         my.setOnClickListener(v -> {
+            //Intent intent = getIntent(); // login에서 id값 받아옴
+            //String userID = intent.getStringExtra("id");
+            //nickname.setText(userID);
             Intent intent = new Intent(this, My.class);
+            //my.putExtra("id", id); //id값 보내줌
             startActivity(intent);
         });
 
-        //날짜 선택 시, click_date화면으로 넘어감
-        calendarView.setOnClickListener(v ->{
-            Intent intent = new Intent(this, ClickDate.class);
-            startActivity(intent);
-        });
+        long now = System.currentTimeMillis();  // 날짜는 현재 날짜로 고정
+        Date date = new Date(now); // 현재 시간 구하기
+        // 출력될 포맷 설정
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        etDate.setText(simpleDateFormat.format(date));
 
-        case1.setOnClickListener(new View.OnClickListener() {
+
+        // 데이터 추가
+        Button insert = (Button) findViewById(R.id.insert);
+        insert.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                sqlDB = myHelper.getWritableDatabase();
-                sqlDB.execSQL("INSERT INTO groupTBL VALUES ( '" + titleResult.getText().toString() + "' , "
-                        + memoResult.getText().toString() + ");");
-                sqlDB.close();
-                Toast.makeText(getApplicationContext(), "저장됨",
+                String  bookname = etTitle.getText().toString();
+                String  point = etPoint.getText().toString();
+                String  memo = etMemo.getText().toString();
+
+                //입력값 누락된거 없는지 확인
+                if(bookname.length() == 0 || point.length() == 0 || memo.length() == 0 ) {
+                    Toast.makeText( getApplicationContext(), "모든 데이터를 입력하세요.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    //DB 삽입 -> 결과 출력 -> 입력필드 초기화
+                    dbHelper.insert(bookname, point, memo);
+                    result.setText(dbHelper.getResult());
+                    Toast.makeText(getApplicationContext(), "데이터 생성",
+                            Toast.LENGTH_SHORT).show();
+
+                    etTitle.setText(null);
+                    etPoint.setText(null);
+                    etMemo.setText(null);
+                }
+            }
+        });
+
+        // 데이터 수정
+        Button update = (Button) findViewById(R.id.update);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String bookname = etTitle.getText().toString();
+                String point = etPoint.getText().toString();
+                String memo = etMemo.getText().toString();
+                dbHelper.update(bookname, point, memo);
+                result.setText(dbHelper.getResult());
+                Toast.makeText(getApplicationContext(), "데이터 수정",
+                        Toast.LENGTH_SHORT).show();
+                select.callOnClick();
+            }
+        });
+
+        // 데이터 삭제
+        Button delete = (Button) findViewById(R.id.delete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String bookname = etTitle.getText().toString();
+                dbHelper.delete(bookname);
+                result.setText(dbHelper.getResult());
+                Toast.makeText(getApplicationContext(), "데이터 삭제",
+                        Toast.LENGTH_SHORT).show();
+                select.callOnClick();
+            }
+        });
+
+        // 데이터 조회
+        select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                result.setText(dbHelper.getResult());
+                Toast.makeText(getApplicationContext(), "데이터 조회",
                         Toast.LENGTH_SHORT).show();
             }
         });
 
     }
+
 }

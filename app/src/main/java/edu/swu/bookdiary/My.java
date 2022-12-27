@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class My extends AppCompatActivity {
-    TextView back, logout;
+    TextView back, logout, nickname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,13 +18,17 @@ public class My extends AppCompatActivity {
         back.setOnClickListener(v -> onBackPressed() );
         logout = findViewById(R.id.logout);
 
-        // Nickname 부분은 회원가입 할 때 작성한 닉네임으로 보이도록
+        // Nickname 부분은 회원가입 할 때 작성한 ID로 보이도록
+        nickname = findViewById(R.id.nickname);
+
+        Intent intent = getIntent();
+        String userID = intent.getStringExtra("id");
+        nickname.setText(userID);
 
         // logout누르면 로그인 화면으로
-        // my 버튼 클릭 시 my화면으로 이동
         logout.setOnClickListener(v -> {
-            Intent intent = new Intent(this, Login.class);
-            startActivity(intent);
+            Intent logout = new Intent(this, Login.class);
+            startActivity(logout);
         });
     }
     

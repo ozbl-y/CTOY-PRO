@@ -19,85 +19,149 @@
         android:textColor="#0724fa"
         android:textStyle="bold" />
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/my"
-        android:layout_marginTop="70dp"
-        android:layout_centerInParent="true" />
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/case1"
+    <TextView
+        android:id="@+id/my2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/my"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginBottom="10dp"
-        android:background="#0724fa"
-        android:enabled="false"
-        android:text="달력형"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/case2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/my"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
         android:background="@color/white"
-        android:text="리스트형"
-        android:textColor="#0724fa"
-        android:textStyle="bold" />
+        android:visibility="invisible"/>
 
-<!--    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linear0"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/my"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DATE" />
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:clickable="false"
+            android:focusable="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/linear0"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TITLE" />
+
+        <EditText
+            android:id="@+id/bookname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/linear1"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POINT" />
+
+        <EditText
+            android:id="@+id/point"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/linear2"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MEMO" />
+
+        <EditText
+            android:id="@+id/memo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/calendarView"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="70dp"
-        android:background="@color/white"
-        android:text="Select"
-        android:textColor="#0724fa"
-        android:textStyle="bold" />-->
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/linear3">
 
-    <EditText
-        android:id="@+id/titleResult"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_below="@id/calendarView"
-        android:background="#FFD700"
-        android:padding="20dp" />
+        <Button
+            android:id="@+id/insert"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="추가" />
 
-    <EditText
-        android:id="@+id/memoResult"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_below="@id/titleResult"
-        android:background="#FFD700"
-        android:padding="20dp" />
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="삭제" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnInsert"
+        <Button
+            android:id="@+id/update"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="수정" />
+
+        <Button
+            android:id="@+id/select"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="조회" />
+
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/memoResult"
-        android:background="@color/white"
-        android:text="ADD"
-        android:textColor="#0724fa"
-        android:textSize="17sp"
-        android:textStyle="bold" />
+        android:layout_below="@+id/linear3"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </ScrollView>
 
 </RelativeLayout>

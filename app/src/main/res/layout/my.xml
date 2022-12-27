@@ -21,9 +21,10 @@
 
     <TextView
         android:id="@+id/my"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:layout_marginStart="20dp"
         android:layout_marginTop="120dp"
         android:layout_marginBottom="140dp"
@@ -34,12 +35,12 @@
 
     <TextView
         android:id="@+id/nickname"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/my"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="140dp"
-        android:text="NICKNAME"
+        android:gravity="center"
         android:textColor="#0724fa"
         android:textSize="20dp"
         android:textStyle="bold" />
